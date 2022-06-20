@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      { inCall ? "We are in the call!" : "Waiting join call" }
+      { inCall ? "We are in the call!" : "Waiting to join call" }
 
     </div>
   );
