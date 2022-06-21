@@ -4,8 +4,10 @@ import {
     useClient, 
     useMicrophoneAndCameraTracks, 
     channelName 
-} from "/settings.js";
+} from "./settings.js";
 import { Grid } from "@material-ui/core";
+import Video from "./Video";
+import Controls from "./Controls";
 
 export default function VideoCall(props) {
     const { setInCall } = props;
@@ -64,17 +66,15 @@ export default function VideoCall(props) {
     }, [channelName, client, ready, tracks]);
 
     return (
-        <Grid container direction="column" style={{height: "100%"}}>
+        <Grid container direction="column" style={{ height: "100%" }}>
             <Grid item style={{ height: "5%"}}>
                 { ready && tracks && (
-                    <Controls tracks = {tracks} setStart={start} setInCall={setInCall} />
+                    <Controls tracks = {tracks} setStart={setStart} setInCall={setInCall} />
                 )}
             </Grid>
             <Grid item style={{ height: "95%"}}>
-                { start && tracks && (
-                    <Videos tracks = {tracks} users={users}/>
-                )}
-
+                { start && tracks && <Video tracks = {tracks} users={users}/>}
+                
             </Grid>
         </Grid>
     );
